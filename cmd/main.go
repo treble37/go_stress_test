@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+	"github.com/treble37/stress_test/pkg/stress"
 )
 
 func main() {
@@ -10,7 +11,7 @@ func main() {
 	ch := make(chan string)
 	totalRequests := 200
 	for i := 0; i < totalRequests; i++ {
-		st := NewDefaultStressTest()
+		st := stress.NewDefaultStressTest()
 		go st.PostRequest(ch)
 	}
 	for i := 0; i < totalRequests; i++ {

@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"bytes"
 )
 
 type RequestBody struct {
@@ -36,7 +37,7 @@ func NewStressTest(url string, contentType string, body RequestBody) *stressTest
 // https://medium.com/dev-bits/making-concurrent-http-requests-in-go-programming-language-823b51bb1dc2
 func (st *stressTest) PostRequest(ch chan<- string) {
 	start := time.Now()
-	resp, err := http.Post(st.url, st.contentType, bytes.newBuffer(st.body.body))
+	resp, err := http.Post(st.url, st.contentType, bytes.NewBuffer(st.body.body))
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -44,7 +45,7 @@ func (st *stressTest) PostRequest(ch chan<- string) {
 	defer resp.Body.Close()
 
 	secs := time.Since(start).Seconds()
-	body, err = ioutil.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}

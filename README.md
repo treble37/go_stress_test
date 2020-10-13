@@ -12,6 +12,8 @@ Elixir source from: https://twitter.com/akoutmos/status/1313886807151517698/phot
 
 ### Running the Golang stress tester
 
+`time go run cmd/main.go`
+
 ### Notes
 
 Follows layout described at https://www.wolfe.id.au/2020/03/10/starting-a-go-project/
