@@ -33,6 +33,7 @@ func NewStressTest(url string, contentType string, body RequestBody) *stressTest
 }
 
 // https://medium.com/@masnun/making-http-requests-in-golang-dd123379efe7
+// https://medium.com/dev-bits/making-concurrent-http-requests-in-go-programming-language-823b51bb1dc2
 func (st *stressTest) PostRequest(ch chan<- string) {
 	start := time.Now()
 	resp, err := http.Post(st.url, st.contentType, bytes.newBuffer(st.body.body))
@@ -47,5 +48,5 @@ func (st *stressTest) PostRequest(ch chan<- string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	ch <- fmt.Sprintf("%.2f elapsed with response length: %d %s", secs, len(body), url)
+	ch <- fmt.Sprintf("%.2f elapsed with response length: %d %s", secs, len(body), st.url)
 }
