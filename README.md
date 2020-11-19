@@ -1,6 +1,6 @@
 ## Description
 
-Stress testing experiments
+A small educational spike: Stress testing experiments - Elixir versus Go
 
 ### Running the Elixir stress tester
 
