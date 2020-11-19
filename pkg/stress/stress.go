@@ -1,13 +1,13 @@
 package stress
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
-	"bytes"
 )
 
 type RequestBody struct {
@@ -49,5 +49,5 @@ func (st *stressTest) PostRequest(ch chan<- string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	ch <- fmt.Sprintf("%.2f elapsed with response length: %d %s", secs, len(body), st.url)
+	ch <- fmt.Sprintf("%.2f sec elapsed with response length: %d %s", secs, len(body), st.url)
 }
